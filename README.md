@@ -20,7 +20,7 @@
 2. Send data to `postalCode` topic, with key=`postalCode` and value:
 ```
 {
-   "town": "", 
+   "town": ""
 }
 ```
-3. Inspect `delivery-address` topic
+3. Inspect `delivery-address` topic for joined address
