@@ -7,6 +7,10 @@ public class AddressJoiner implements ValueJoiner<String, String, String> {
 
     @Override
     public String apply(String address, String postalCode) {
+        if (postalCode == null) {
+            return address;
+        }
+
         return JsonPath
                 .parse(address)
                 .put("$", "town", getTown(postalCode))
