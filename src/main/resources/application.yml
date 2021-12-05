@@ -1,0 +1,11 @@
+spring.application.name: kafka-joiner
+spring.cloud.stream.bindings.process-in-0:
+  destination: address
+spring.cloud.stream.bindings.process-in-1:
+  destination: postal-code
+spring.cloud.stream.bindings.process-out-0:
+  destination: delivery-address
+spring.cloud.stream.kafka.streams.binder:
+  configuration:
+    default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+    default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
