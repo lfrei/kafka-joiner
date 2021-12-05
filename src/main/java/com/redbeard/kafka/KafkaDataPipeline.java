@@ -6,6 +6,7 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
+import org.apache.kafka.streams.kstream.Named;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,7 +22,8 @@ public class KafkaDataPipeline {
                 .leftJoin(postalCode,
                         new PostalCodeExtractor(),
                         new AddressJoiner(),
-                        Materialized.with(Serdes.String(), Serdes.String()))
-                .toStream();
+                        Named.as("address-postal-code-join"),
+                        Materialized.as("address-postal-code-store"))
+                .toStream(Named.as("delivery-address"));
     }
 }
